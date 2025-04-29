@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vote Success - e-Voting System</title>
+  <style>
+    .success-message {
+      text-align: center;
+      margin-top: 50px;
+    }
+    .btn {
+      background-color: #4CAF50;
+      color: white;
+      padding: 15px 30px;
+      font-size: 1.2em;
+      border: none;
+      cursor: pointer;
+      transition: 0.3s;
+      margin-top: 20px;
+    }
+    .btn:hover {
+      background-color: #45a049;
+    }
+    .candidate-img {
+      width: 100px;
+      height: 100px;
+      border-radius: 10px;
+      display: block;
+      margin: 0 auto 10px;
+    }
+    .symbol-img {
+      width: 60px;
+      height: 60px;
+      margin-top: 10px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="success-message" id="successContent">
+    <!-- Filled by JavaScript -->
+  </div>
+
+  <script>
+    const selectedCandidate = localStorage.getItem('selectedCandidate');
+    const candidates = JSON.parse(localStorage.getItem('candidates')) || [];
+
+    const successDiv = document.getElementById('successContent');
+    const found = candidates.find(c => c.name === selectedCandidate);
+
+    if (found) {
+      successDiv.innerHTML = `
+        <img src="${found.photo}" class="candidate-img">
+        <h1>Your vote for <strong>${found.name}</strong> has been cast successfully!</h1>
+        <img src="${found.symbol}" class="symbol-img">
+        <button class="btn" onclick="window.location.href='results.html'">View Results</button>
+      `;
+    } else {
+      successDiv.innerHTML = `
+        <h1>Your vote for <strong>${selectedCandidate}</strong> has been cast successfully!</h1>
+        <button class="btn" onclick="window.location.href='results.html'">View Results</button>
+      `;
+    }
+  </script>
+
+</body>
+</html>
