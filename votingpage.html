@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vote Page - e-Voting System</title>
+  <style>
+    .btn {
+      background-color: #4CAF50;
+      color: white;
+      padding: 15px 30px;
+      font-size: 1.2em;
+      border: none;
+      cursor: pointer;
+      transition: 0.3s;
+      display: block;
+      margin: 20px auto;
+      text-align: center;
+    }
+    .btn:hover {
+      background-color: #45a049;
+    }
+    .vote-section {
+      text-align: center;
+      margin-top: 60px;
+    }
+    .candidate-info {
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="vote-section" id="voteSection">
+    <h1>Select your candidate</h1>
+  </div>
+
+  <script>
+    // Fetch candidates from localStorage or use an empty array if not available
+    const candidates = JSON.parse(localStorage.getItem("candidates")) || [];
+
+    const voteSection = document.getElementById("voteSection");
+
+    // Dynamically create buttons for each candidate
+    candidates.forEach((candidate, index) => {
+      const btn = document.createElement("button");
+      btn.className = "btn";
+
+      // Set button content with candidate's photo, name, and symbol
+      btn.innerHTML = `
+        <div class="candidate-info">
+          <img src="${candidate.photo}" style="width:80px;height:80px;border-radius:5px;"><br>
+          <strong>${candidate.name}</strong><br>
+          <img src="${candidate.symbol}" style="width:50px;height:50px;margin-top:10px;">
+        </div>
+      `;
+
+      // Set the action when the button is clicked
+      btn.onclick = function () {
+        localStorage.setItem("selectedCandidate", candidate.name);
+        window.location.href = "confirmvote.html";
+      };
+
+      // Add button to the vote section
+      voteSection.appendChild(btn);
+    });
+
+    // Fallback buttons in case no candidates are available in localStorage
+    if (candidates.length === 0) {
+      // You can customize this behavior or leave empty if there's no candidates
+      const defaultCandidates = ['Candidate 1', 'Candidate 2', 'Candidate 3'];
+      defaultCandidates.forEach(candidate => {
+        const btn = document.createElement("button");
+        btn.className = "btn";
+        btn.innerHTML = `Vote for ${candidate}`;
+        btn.onclick = function () {
+          localStorage.setItem("selectedCandidate", candidate);
+          window.location.href = "confirmvote.html";
+        };
+        voteSection.appendChild(btn);
+      });
+    }
+  </script>
+
+</body>
+</html>
