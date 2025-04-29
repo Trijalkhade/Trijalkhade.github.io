@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Confirm Your Vote - e-Voting System</title>
+  <style>
+    .confirmation {
+      text-align: center;
+      margin-top: 50px;
+    }
+    .btn {
+      background-color: #4CAF50;
+      color: white;
+      padding: 15px 30px;
+      font-size: 1.2em;
+      border: none;
+      cursor: pointer;
+      transition: 0.3s;
+      margin: 10px;
+    }
+    .btn:hover {
+      background-color: #45a049;
+    }
+    .candidate-img {
+      width: 100px;
+      height: 100px;
+      border-radius: 10px;
+      display: block;
+      margin: 0 auto 10px;
+    }
+    .symbol-img {
+      width: 60px;
+      height: 60px;
+      margin-top: 10px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="confirmation">
+    <div id="candidateDisplay">
+      <!-- Dynamically filled -->
+    </div>
+    <button class="btn" onclick="castVote()">Yes, Vote</button>
+    <button class="btn" onclick="window.location.href='votingpage.html'">Change Vote</button>
+  </div>
+
+  <script>
+    const selectedCandidate = localStorage.getItem('selectedCandidate');
+    const allCandidates = JSON.parse(localStorage.getItem('candidates')) || [];
+
+    const displayDiv = document.getElementById('candidateDisplay');
+
+    // Check if selectedCandidate matches one in localStorage
+    const found = allCandidates.find(c => c.name === selectedCandidate);
+
+    if (found) {
+      displayDiv.innerHTML = `
+        <img src="${found.photo}" class="candidate-img">
+        <h1>Are you sure you want to vote for <strong>${found.name}</strong>?</h1>
+        <img src="${found.symbol}" class="symbol-img">
+      `;
+    } else {
+      displayDiv.innerHTML = `
+        <h1>Are you sure you want to vote for <strong>${selectedCandidate}</strong>?</h1>
+      `;
+    }
+
+    function castVote() {
+      let votes = JSON.parse(localStorage.getItem('votes')) || {};
+
+      if (!votes[selectedCandidate]) {
+        votes[selectedCandidate] = 0;
+      }
+
+      votes[selectedCandidate]++;
+      localStorage.setItem('votes', JSON.stringify(votes));
+      window.location.href = 'votesuccess.html';
+    }
+  </script>
+
+</body>
+</html>

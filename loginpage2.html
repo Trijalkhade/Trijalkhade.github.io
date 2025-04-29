@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - e-Voting System</title>
+  <style>
+    /* Basic Reset */
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Center the page content */
+    body {
+      background-color: #f0f0f0;
+      height: 100%;
+      display: table;
+      width: 100%;
+    }
+
+    .container {
+      display: table-cell;
+      vertical-align: middle;
+      text-align: center;
+      width: 100%;
+    }
+
+    /* Style the login form block */
+    .login-form {
+      width: 300px;
+      padding: 30px;
+      border-radius: 10px;
+      background-color: #ffffff;
+      border: 1px solid #ccc;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      margin: 0 auto;
+    }
+
+    h2 {
+      color: #333;
+      margin-bottom: 20px;
+      font-size: 1.5em;
+    }
+
+    /* Style for input fields */
+    .login-form input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1em;
+      box-sizing: border-box; /* Ensures padding doesn't affect width */
+    }
+
+    /* Style for the submit button */
+    .login-form button {
+      width: 100%;
+      padding: 12px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1.1em;
+      box-sizing: border-box; /* Ensures padding doesn't affect width */
+    }
+
+    /* Hover effect for button */
+    .login-form button:hover {
+      background-color: #45a049;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="login-form">
+      <h2>Login</h2>
+      <form action="dashboard.html" method="POST">
+        <input type="text" placeholder="Username" required>
+        <input type="password" placeholder="Password" required>
+        <button type="submit">Login</button>
+      </form>
+    </div>
+  </div>
+
+</body>
+</html>
