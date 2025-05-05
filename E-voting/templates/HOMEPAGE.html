@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home - E-Voting System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        nav {
+            margin-top: 10px;
+        }
+
+        nav a {
+            color: #fff;
+            margin-right: 20px;
+            text-decoration: none;
+        }
+
+        .main-content {
+            padding: 60px 40px;
+            text-align: center;
+        }
+
+        .main-content h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .main-content p {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        .buttons {
+            margin-top: 20px;
+        }
+
+        .buttons a {
+            display: inline-block;
+            padding: 12px 25px;
+            margin: 0 10px;
+            background-color: #007BFF;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .buttons a:hover {
+            background-color: #0056b3;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: #fff;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Welcome to the E-Voting System</h1>
+        <nav>
+            <a href="{{ url_for('dashboard') }}">Dashboard</a>
+            <a href="{{ url_for('login') }}">Login</a>
+        </nav>
+    </header>
+
+    <div class="main-content">
+        <h2>Fast, Secure & Reliable Online Voting</h2>
+        <p>Access your dashboard or log in to start voting.</p>
+        <div class="buttons">
+            <a href="{{ url_for('dashboard') }}">Go to Dashboard</a>
+            <a href="{{ url_for('login') }}">Login to Vote</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 E-Voting System. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

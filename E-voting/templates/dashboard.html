@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard - E-Voting System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #eef2f3;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        nav {
+            margin-top: 10px;
+        }
+
+        nav a {
+            color: #fff;
+            margin-right: 20px;
+            text-decoration: none;
+        }
+
+        .container {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .section h2 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .section p {
+            font-size: 16px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 15px;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: white;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Dashboard</h1>
+    <nav>
+        <a href="{{ url_for('homepage') }}">Home</a>
+    </nav>
+</header>
+
+<div class="container">
+    <div class="section">
+        <h2>Welcome to your Dashboard</h2>
+        <p>You can manage or update the candidates available for voting.</p>
+        <a href="{{ url_for('voting_page') }}" class="btn">Change Candidates</a>
+    </div>
+
+    <div class="section">
+        <h2>View Results</h2>
+        <p>See the latest election results once voting is complete.</p>
+        <a href="{{ url_for('results') }}" class="btn">View Results</a>
+    </div>
+
+    <div class="section">
+        <h2>Back to Login</h2>
+        <p>If needed, return to the login page.</p>
+        <a href="{{ url_for('login') }}" class="btn">Login Page</a>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2025 E-Voting System. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

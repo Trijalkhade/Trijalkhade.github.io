@@ -1,0 +1,23 @@
+[
+    {
+        "id": "1",
+        "name": "Trijal",
+        "photo": "static/images/img1.jpg",
+        "symbol": "static/images/img4.jpg",
+        "votes": 4
+    },
+    {
+        "id": "2",
+        "name": "Pranjal",
+        "photo": "static/images/img2.jpg",
+        "symbol": "static/images/img4.jpg",
+        "votes": 5
+    },
+    {
+        "id": "3",
+        "name": "Janhavi",
+        "photo": "static/images/img3.jpg",
+        "symbol": "static/images/img5.jpg",
+        "votes": 4
+    }
+]

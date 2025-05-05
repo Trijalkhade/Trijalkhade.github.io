@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Confirm Your Vote - E-Voting System</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #e0eafc, #cfdef3);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .confirmation-card {
+      background-color: #ffffff;
+      padding: 40px 30px;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      max-width: 450px;
+      width: 90%;
+    }
+
+    .candidate-img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 15px;
+      border: 3px solid #007BFF;
+    }
+
+    .symbol-img {
+      width: 70px;
+      height: 70px;
+      margin-top: 10px;
+    }
+
+    h2 {
+      font-size: 22px;
+      margin: 20px 0;
+      color: #333;
+    }
+
+    .btn {
+      display: inline-block;
+      margin: 15px 10px 0;
+      padding: 12px 28px;
+      font-size: 16px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      text-decoration: none;
+      color: #fff;
+    }
+
+    .btn-confirm {
+      background-color: #28a745;
+    }
+
+    .btn-confirm:hover {
+      background-color: #218838;
+    }
+
+    .btn-cancel {
+      background-color: #dc3545;
+    }
+
+    .btn-cancel:hover {
+      background-color: #c82333;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="confirmation-card">
+    {% if candidate %}
+      {% if candidate.photo %}
+        <img src="{{ url_for('static', filename=candidate.photo.split('static/')[1]) }}" alt="{{ candidate.name }}" class="candidate-img">
+      {% endif %}
+      <h2>Confirm your vote for <strong>{{ candidate.name }}</strong></h2>
+      {% if candidate.symbol %}
+        <img src="{{ url_for('static', filename=candidate.symbol.split('static/')[1]) }}" alt="Symbol" class="symbol-img">
+      {% endif %}
+    {% else %}
+      <h2>Candidate data not available.</h2>
+    {% endif %}
+
+    <form method="POST" action="{{ url_for('cast_vote') }}">
+      <input type="hidden" name="candidate_id" value="{{ candidate.id }}">
+      <button type="submit" class="btn btn-confirm">Yes, Confirm</button>
+      <a href="{{ url_for('vote') }}" class="btn btn-cancel">No, Go Back</a>
+    </form>
+  </div>
+
+</body>
+</html>
